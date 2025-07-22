@@ -25,11 +25,11 @@ CREATE TABLE table1(
 	UPDATE table1 SET role = 'Senior Developer', salary = 90000 WHERE id = 2;
 	UPDATE table1 SET place = 'Nagercoil';
 	UPDATE table1
-SET place = CASE 
-    WHEN id % 2 = 0 THEN 'Nagercoil'      -- Odd IDs
+SET native = CASE 
+    WHEN id % 2 <> 0 THEN 'Nagercoil'      -- Odd IDs
     ELSE 'Kanyakumari'                    -- Even IDs
 END;
-
+	update table1 set role= 'sr developer' where id =5
 
 --delete
 	delete from table1 where id=5
@@ -41,7 +41,8 @@ END;
 	alter table table2 rename to table1
 	
 --distinct
-	select distinct 
+	select distinct Native, name   from table1
+	select distinct on (id)* from table1
 
 --create
 	insert into table1 (id,name, role, salary)values (1,'Alice', 'Developer',60000) 
