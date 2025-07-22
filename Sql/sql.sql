@@ -41,7 +41,7 @@ END;
 	alter table table2 rename to table1
 	
 --distinct
-	
+	select distinct 
 
 --create
 	insert into table1 (id,name, role, salary)values (1,'Alice', 'Developer',60000) 
