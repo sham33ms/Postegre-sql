@@ -32,3 +32,12 @@ SELECT subject, SUM(marks) AS total_marks
 FROM cntsm
 GROUP BY subject;
 
+
+--avg
+
+SELECT AVG(marks) FROM cntsm;
+
+SELECT class, AVG(marks) AS avg_marks
+FROM cntsm
+GROUP BY class
+HAVING AVG(marks) > 80;
