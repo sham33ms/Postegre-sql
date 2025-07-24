@@ -19,12 +19,11 @@ INSERT INTO orders (customer_name, order_date, amount) VALUES
 ('Meena', '2025-04-12', 600),
 ('Priya', '2025-07-01', 400);
 
-
-
 SELECT * FROM orders
 WHERE EXTRACT(month FROM order_date) = EXTRACT(month FROM CURRENT_DATE);
 
-SELECT customer_name, COUNT(*) AS total_orders
+select count(distinct customer_name) from orders
+SELECT customer_name, sum (amount)
 FROM orders
 GROUP BY customer_name;
 
@@ -38,18 +37,25 @@ where order_date >= CURRENT_DATE - INTERVAL '30 days'
 GROUP BY customer_name, order_date
 having order_date >= CURRENT_DATE - INTERVAL '6 months'
 
-
 SELECT EXTRACT(day FROM order_date) AS year, SUM(amount) AS total_sales
 FROM orders
 GROUP BY year
 ORDER BY year;
-
 
 select * from orders
 
 SELECT customer_name , amount
 FROM orders
 where SUM(amount) > 1000;
-GROUP BY customer_name , amount
+GROUP BY customer_name , amount;
+
+SELECT customer_name, COUNT(*) AS order_count
+FROM orders
+WHERE EXTRACT(YEAR FROM order_date) = EXTRACT(YEAR FROM CURRENT_DATE)
+GROUP BY customer_name;
+
+delete from orders where order_id=15
 
 
+select * from employees;
+select name 
