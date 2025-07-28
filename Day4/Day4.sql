@@ -7,7 +7,7 @@ CREATE TABLE books (
 
 -- Insert data into books
 INSERT INTO books (book_id, book_title) VALUES
-(301, 'Wings of Fire'),
+(316,null),
 (302, 'The Alchemist'),
 (303, 'Rich Dad Poor Dad'),
 (304, 'Atomic Habits'),
@@ -102,3 +102,11 @@ FROM
     books b
 LEFT JOIN 
     members m ON m.borrowed_book_id = b.book_id;
+	
+select b.book_id,
+coalesce (m.member_name, ' not borrowed'),
+coalesce (b.book_title, 'No book')
+from books b
+left join members m
+on m.borrowed_book_id = b.book_id;
+	
